@@ -12,11 +12,7 @@ videosRouter.get('/',
     },
     limit: {
       type: Number,
-      required: true
-    },
-    page: {
-      type: Number,
-      required: true
+      max: 1000
     },
   }),
   videosController.processGetVideosBySearch

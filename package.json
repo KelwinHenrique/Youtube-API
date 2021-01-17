@@ -12,7 +12,8 @@
     "express": "^4.17.1",
     "http-status": "^1.5.0",
     "nodemon": "^2.0.3",
-    "querymen": "^2.1.4"
+    "querymen": "^2.1.4",
+    "ytsr": "^3.2.1"
   },
   "devDependencies": {
     "sucrase": "^3.17.0"
