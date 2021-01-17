@@ -83,4 +83,35 @@ describe('Unit Test getVideosBySearch', () => {
     )
   })
 
+  test('unit test get-videos-by-search should return error when dont send query', async () => {
+    const expectAssertValue = 1
+    expect.assertions(expectAssertValue)
+
+    return getVideosBySearch(cursor).catch(err =>
+      expect(err.error.message).toEqual('Error to find videos.')
+    )
+  })
+
+  test('unit test get-videos-by-search should return empty iamge url and author name', async () => {
+
+    videosRepository.getVideosByYtsr = jest.fn(() => (
+      {
+        items: [
+          {
+            title: 'Super Happy Dogs | Funny Dog Video Compilation 2017',
+            url: 'https://www.youtube.com/watch?v=wl4m1Rqmq-Y',
+            description: 'From dogs jumping on trampolines, dogs jumping on other dogs, to dogs jumping into the water to fetch, these are just a few of the ...',
+            views: 987015,
+            duration: '4:4:19',
+            uploadedAt: '3 years ago'
+          }
+        ]
+      }
+    ))
+
+    const responseGetVideos = await getVideosBySearch(cursor, query)
+    expect(responseGetVideos.videos[0].imageUrl).toEqual('')
+    expect(responseGetVideos.videos[0].author).toEqual('')
+    expect(responseGetVideos.totalDays).toEqual(-1)
+  })
 })
