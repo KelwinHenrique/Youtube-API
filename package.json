@@ -2,8 +2,16 @@
   "name": "youtube-api",
   "version": "1.0.0",
   "description": "",
+  "apidoc": {
+    "name": "Youtube API",
+    "version": "0.1.0",
+    "description": "Api Doc for Youtube API",
+    "title": "Youtube API",
+    "url": "http://localhost:3000/api"
+  },
   "scripts": {
-    "start:dev": "nodemon src/index.js"
+    "start:dev": "nodemon src/index.js",
+    "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +24,8 @@
     "ytsr": "^3.2.1"
   },
   "devDependencies": {
+    "apidoc": "^0.26.0",
+    "apidoc-markdown": "^5.2.1",
     "sucrase": "^3.17.0"
   }
 }
