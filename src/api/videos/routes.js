@@ -13,7 +13,7 @@ const videosRouter = new Router({ mergeParams: true })
  * @apiParam {Number} limit Limit of videos to return
  * @apiParam {String} daysOfWeek Time by days
  * @apiParamExample {json} Request-Example:
- * localhost:3000/api/videos?search=dogs HAPPY&limit=8&daysOfWeek=15,120,30,150,20,40,90
+ * http://localhost:3000/api/videos?search=dogs%happy&limit=20&daysOfWeek=10%2C10%2C10%2C10%2C10%2C10%2C10
  * @apiSuccess {Array} videos List of videos.
  * @apiSuccess {String} videos.title Video's title.
  * @apiSuccess {String} videos.url Video's url.
@@ -44,6 +44,7 @@ const videosRouter = new Router({ mergeParams: true })
  *        "to",
  *        "and",
  *        "funny",
+ *      ]
  *     }
  *
  *

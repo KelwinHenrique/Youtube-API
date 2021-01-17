@@ -7,7 +7,7 @@ This api contains:
 - Unit and integration tests;
 - Log system;
 - Based on clean architecture;
-- [Documentation.](https://github.com/KelwinHenrique/Youtube-API/blob/main/DOCS.md);
+- [Documentation](https://github.com/KelwinHenrique/Youtube-API/blob/main/DOCS.md);
 - Docker;
 
 ## How to run the project with docker
@@ -16,7 +16,7 @@ This api contains:
 
 2) Run the comand bellow in your terminal:
 ```json
-  curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/videos?search=dogs%happy&limit=20&daysOfWeek=10%2C10%2C10%2C10%2C10%2C10%2C10
+  curl -H "Content-Type: application/json" -X GET "http://localhost:3000/api/videos?search=dogs%happy&limit=20&daysOfWeek=10%2C10%2C10%2C10%2C10%2C10%2C10"
 ```
 
 ## How to run the project without Docker
@@ -27,7 +27,7 @@ This api contains:
 
 3) Run the comand bellow in your terminal:
 ```json
-  curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/videos?search=dogs%happy&limit=20&daysOfWeek=10%2C10%2C10%2C10%2C10%2C10%2C10
+  curl -H "Content-Type: application/json" -X GET "http://localhost:3000/api/videos?search=dogs%happy&limit=20&daysOfWeek=10%2C10%2C10%2C10%2C10%2C10%2C10"
 ```
 
 ## How to run tests
