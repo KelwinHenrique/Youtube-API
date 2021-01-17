@@ -14,6 +14,10 @@ videosRouter.get('/',
       type: Number,
       max: 1000
     },
+    daysOfWeek: {
+      type: Array,
+      required: true
+    }
   }),
   videosController.processGetVideosBySearch
 )
