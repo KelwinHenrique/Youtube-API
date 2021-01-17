@@ -1,5 +1,7 @@
-import { serializeError } from '../../../../core/services/serializers'
 import ytsr from 'ytsr'
+import { serializeError } from '../../../../core/services/serializers'
+import { ConsoleLogger } from '../../../../core/services/log'
+
 
 const getTimeInSecondsAllVideos = (videos) => (
   videos.map(video => {
@@ -22,6 +24,7 @@ const getTimeInSecondsAllVideos = (videos) => (
 )
 
 const calculateDaysToWatchAllVideos = (videos, timeByDayInSeconds) => {
+  ConsoleLogger().info('START_CALCULATE_DAYS_TO_WATCH_ALL_VIDEOS')
   const timeInSecondsAllVideos = getTimeInSecondsAllVideos(videos)
   let totalOfDays = 0, attempts = 0
   while (timeInSecondsAllVideos.length > 0) {
@@ -62,6 +65,7 @@ const getAllWords = (videos) => {
 }
 
 const findWordsMostUsed = (videos) => {
+  ConsoleLogger().info('START_FIND_WORDS_MOST_USED')
   const words = getAllWords(videos)
   const occurances = {};
   for (let word of words) {
@@ -107,12 +111,14 @@ const serializeVideos = (videos) => (
 
 const getVideos = async (search, limit) => {
   try {
+    ConsoleLogger().info('START_GET_VIDEOS_YTSR', { search, limit })
     const opt = {
       limit
     }
     const searchResults = await ytsr(search, opt)
     return searchResults.items
   } catch (error) {
+    ConsoleLogger().error('ERROR_GET_VIDEOS_YTSR', { error, search, limit })
     return Promise.reject({ messageError: 'Error to find videos with ytsr.' })
   }
 }
@@ -123,6 +129,7 @@ const transformInSeconds = (daysOfWeek) => {
 
 const getVideosBySearch = async (cursor, query) => {
   try {
+    ConsoleLogger().info('START_GET_VIDEOS_BY_SEARCH', { cursor, query })
     const { search, daysOfWeek } = query
     const timeByDayInSeconds = transformInSeconds(daysOfWeek)
     const { limit } = cursor
@@ -136,6 +143,7 @@ const getVideosBySearch = async (cursor, query) => {
       totalDays: daysToWatchAllVideos
     }
   } catch (error) {
+    ConsoleLogger().error('ERROR_GET_VIDEOS_BY_SEARCH', { error, cursor, query })
     return Promise.reject(serializeError(error, 'Error to find videos.'))
   }
 }
