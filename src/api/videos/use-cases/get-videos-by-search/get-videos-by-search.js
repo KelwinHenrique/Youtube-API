@@ -1,6 +1,6 @@
-import ytsr from 'ytsr'
 import { serializeError } from '../../../../core/services/serializers'
 import { ConsoleLogger } from '../../../../core/services/log'
+import { videosRepository } from '../../repository'
 
 
 const getTimeInSecondsAllVideos = (videos) => (
@@ -115,7 +115,7 @@ const getVideos = async (search, limit) => {
     const opt = {
       limit
     }
-    const searchResults = await ytsr(search, opt)
+    const searchResults = await videosRepository.getVideosByYtsr(search, opt)
     return searchResults.items
   } catch (error) {
     ConsoleLogger().error('ERROR_GET_VIDEOS_YTSR', { error, search, limit })
